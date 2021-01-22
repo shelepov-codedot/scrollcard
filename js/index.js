@@ -6,7 +6,7 @@ const scrollTest = (selector = 'main') => {
 
         mainHeight.style.setProperty("--scrollGrid", transY + "%")
     } else {
-        console.log('bad');
+        console.log('selector not founded');
     }
 }
 
