@@ -12,7 +12,12 @@ body {
 }
 
 main {
-    height: calc(8em * 8 - 1.5em);
+    height: calc(8em * 8 - 0.5em);
+}
+
+.header-title h1,
+.footer-title h1 {
+    text-align: center;
 }
 
 .grid-cards,
@@ -21,28 +26,38 @@ main {
 }
 
 .grid-cards {
-    --scrollGrid: 0;
     display: grid;
-    grid-template: repeat(8, 8em) / repeat(5, 14em);
+    grid-template: repeat(15, 8em) / repeat(5, 14em);
     grid-gap: 1.5em;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) rotateX(45deg) rotateZ(45deg) translateY(var(--scrollGrid));
+    top: 0%;
+    left: 40%;
     transform-origin: 50% 0;
+}
+
+.main {
+    --scrollGrid: 0;
+    transform: translateX(-50%) rotateX(60deg) rotateZ(45deg) translateY(var(--scrollGrid));
 }
 
 .grid-item {
     display: block;
     position: relative;
+    transition: all 0.3s;
 }
 
 .card-img {
     background-image: url(https://i.postimg.cc/Vspg0Nn2/business-card-backgrounds.png);
     background-size: 200% 200%;
-    padding: 0.75em;
+    padding: 1em;
     position: absolute;
-    transition: all 0.3s;
     width: 100%;
     height: 100%;
+}
+
+.grid-item:hover,
+.card-img,
+.grid-item:focus,
+.card-img {
+    transform: translateZ(calc(0.75em*4));
 }

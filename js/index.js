@@ -1,13 +1,13 @@
-function scrollGridImg() {
-    let bodyHeight = document.body.offsetHeight
-    let mainHeight = document.querySelector("main").offsetHeight
-    let cardList = document.querySelector(".grid-cards")
-    let transY = (window.pageYOffset / (mainHeight - bodyHeight)) * -100;
+const scrollTest = (selector = 'main') => {
+    if (selector == 'main') {
+        let bodyHeight = document.body.offsetHeight
+        let mainHeight = document.querySelector(selector)
+        let transY = (window.pageYOffset / (mainHeight.offsetHeight - bodyHeight)) * -100
 
-    cardList.style.setProperty("--scrollGrid", transY + "%");
+        mainHeight.style.setProperty("--scrollGrid", transY + "%")
+    } else {
+        console.log('bad');
+    }
 }
 
-scrollGridImg();
-
-window.addEventListener("resize", scrollGridImg);
-window.addEventListener("scroll", scrollGridImg);
+window.addEventListener('scroll', () => scrollTest('main'));
