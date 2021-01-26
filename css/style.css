@@ -36,15 +36,18 @@ main {
 }
 
 .grid-cards {
-    --scrollGrid: 0;
     display: grid;
     grid-template: repeat(46, 8em) / 14em;
     grid-gap: 1.5em;
-    position: fixed;
+    position: relative;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%) rotateX(60deg) rotateZ(45deg) translateY(var(--scrollGrid));
     transform-origin: 20% 0;
+}
+
+.main {
+    --scrollGrid: 0;
+    transform: translateX(-50%) rotateX(60deg) rotateZ(45deg) translateY(var(--scrollGrid));
 }
 
 .card {
