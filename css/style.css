@@ -1,6 +1,7 @@
 *,
 *:before,
 *:after {
+    border: 0;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -9,10 +10,19 @@
 body {
     height: 100vh;
     overflow-x: hidden;
+    background-color: #3d3d3d;
 }
 
 main {
-    height: calc(8em * 8 - 0.5em);
+    display: block;
+    margin: auto;
+    position: relative;
+    height: calc(8em * 36 - 1.5em);
+}
+
+.header,
+.footer {
+    color: #ffffff;
 }
 
 .header-title h1,
@@ -21,43 +31,91 @@ main {
 }
 
 .grid-cards,
-.grid-item {
+.card {
     transform-style: preserve-3d;
 }
 
 .grid-cards {
+    --scrollGrid: 0;
     display: grid;
-    grid-template: repeat(15, 8em) / repeat(5, 14em);
+    grid-template: repeat(46, 8em) / 14em;
     grid-gap: 1.5em;
     position: fixed;
-    top: -10%;
-    left: 40%;
-    transform-origin: 50% 0;
-}
-
-.main {
-    --scrollGrid: 0;
+    top: 50%;
+    left: 50%;
     transform: translateX(-50%) rotateX(60deg) rotateZ(45deg) translateY(var(--scrollGrid));
+    transform-origin: 20% 0;
 }
 
-.grid-item {
+.card {
     display: block;
     position: relative;
-    transition: all 0.3s;
 }
 
-.card-img {
-    background-image: url(https://i.postimg.cc/Vspg0Nn2/business-card-backgrounds.png);
-    background-size: 200% 200%;
-    padding: 1em;
-    position: absolute;
+.contents {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
 }
 
-.grid-item:hover,
-.card-img,
-.grid-item:focus,
-.card-img {
-    transform: translateZ(calc(1em*4));
+.contents h2 {
+    color: #ffffff;
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.card:hover .card-item,
+.card:focus .card-item {
+    transform: translateZ(calc(2em*1.5));
+}
+
+.card-item {
+    background-image: url(../img/1.jpg);
+    background-size: 200% 200%;
+    color: #000;
+    padding: 0.75em;
+    position: absolute;
+    transition: all 0.3s;
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (min-width: 576px) {
+    main {
+        height: calc(8em * 18 - 1.5em);
+    }
+    .grid-cards {
+        grid-template: repeat(23, 8em) / repeat(2, 14em);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    main {
+        height: calc(8em * 12 - 1.5em);
+    }
+    .grid-cards {
+        grid-template: repeat(16, 8em) / repeat(3, 14em);
+    }
+}
+
+@media screen and (min-width: 992px) {
+    main {
+        height: calc(8em * 13 - 1.5em);
+    }
+    .grid-cards {
+        grid-template: repeat(12, 8em) / repeat(4, 14em);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    main {
+        height: calc(8em * 14 - 1.5em);
+    }
+    .grid-cards {
+        grid-template: repeat(10, 8em) / repeat(5, 14em);
+    }
 }
